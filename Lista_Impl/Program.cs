@@ -13,6 +13,8 @@
             list.Add(c2);
             list.Add(c3);
             list.Add(new Contact("Bruna", "987"));
+
+            list.RemoveFromName("caue");
         }
     }
 }

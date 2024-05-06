@@ -59,6 +59,56 @@ namespace Lista_Impl
             }
         }
 
+        public bool RemoveFromName(string name)
+        {
+            if (!IsEmpty())
+            {
+                Contact aux = head;
+                Contact prev = head;
+
+                bool comparison = name.Equals(head.getName());
+
+                if (comparison)
+                {
+                    head = head.getNext();
+
+                    if(head == null)
+                    {
+                        tail = null;
+                    }
+                    return true;
+                }
+                else
+                {
+                    do
+                    {
+                        comparison = name.Equals(aux.getName());
+
+                        if (!comparison)
+                        {
+                            prev = aux;
+                            aux = aux.getNext();
+                        }
+                    } while (!comparison && aux != null);
+
+                    if (comparison)
+                    {
+                        prev.setNext(aux.getNext());
+
+                        if (prev.getNext() == null)
+                        {
+                            tail = prev;
+                        }
+
+                        return true;
+                    }
+                    
+                }
+            }
+
+            return false;
+        }
+
         private bool IsEmpty()
         {
             return head == null && tail == null;
